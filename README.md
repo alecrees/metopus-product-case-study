@@ -72,6 +72,7 @@ docs/
   08-screenshots-and-walkthrough.md
   09-public-diagrams.md
   10-public-walkthrough-script.md
+  11-recording-script-and-shot-list.md
 assets/
   screenshots/
   diagrams/
