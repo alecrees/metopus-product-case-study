@@ -62,18 +62,21 @@ Public-safe examples:
 
 Metopus includes performance-sensitive visual and card surfaces. These need real-device checks because graphics behaviour differs across devices, GPUs and OS versions.
 
-Observed public-safe test devices include:
+Observed public-safe test coverage includes:
 
-- Sony Xperia 1 V as a high-end Android reference
-- Google Pixel 8a as a mid-tier Android reference
-- Samsung Galaxy Note 9 SM-N960F as an older Android 10 / Exynos 9810 / Mali GPU stress device
+- recent flagship Android hardware
+- mid-range Android hardware
+- older Android hardware with more constrained GPU performance
+- iOS phone and tablet hardware
+- different GPU families and display characteristics
+- different screen sizes, refresh rates and touch ergonomics
 
-Public-safe observations from device notes:
+Public-safe observations from device testing:
 
-- the app installed and rendered correctly on the older Note 9
+- the app installed and rendered correctly across older and newer hardware classes
 - culture view was comparatively smooth on older hardware
 - heavier artist-card and scene surfaces showed more slowdown/jank on older hardware
-- the older Mali device showed darker card rendering, flagged for future colour/blending investigation
+- older mobile GPUs can show different colour, blending and shader behaviour, flagged for future visual tuning
 - the practical response is graceful graphics-profile scaling rather than replacing the whole renderer
 
 ## Planned Graphics Profile Direction
@@ -104,7 +107,7 @@ The public case study does not publish:
 - profiler traces
 - app builds
 - screenshots with private data
-- device identifiers beyond broad public-safe model references
+- exact device inventory or identifiers
 - private bug notes that reveal sensitive mechanics
 - security policy details
 
