@@ -81,4 +81,4 @@ It demonstrates:
 
 ## Publication Status
 
-Draft stage. Screenshots, diagrams and live links should be added only after a privacy and IP check.
+Initial public version. Screenshots, diagrams and live links should be added only after a privacy and IP check.
