@@ -34,8 +34,9 @@ This is not presented as a solo claim of senior expertise in every technology us
 ```mermaid
 flowchart TD
     A["Public marketing site<br/>Next.js / React / TypeScript"] --> B["Public artist profiles<br/>SEO and fan capture"]
-    C["Private web app shell<br/>React / TypeScript"] --> F["Supabase / PostgreSQL<br/>auth, data, storage, edge logic"]
-    D["Native Android app<br/>Kotlin"] --> G["Shared Rust logic<br/>domain and visual systems"]
+    C["Private web app shell<br/>React / TypeScript / WASM"] --> F["Supabase / PostgreSQL<br/>auth, data, storage, edge logic"]
+    C --> G["Shared Rust / WebAssembly logic<br/>domain and visual systems"]
+    D["Native Android app<br/>Kotlin"] --> G
     E["Native iOS app<br/>SwiftUI"] --> G
     G --> F
     B --> F
@@ -46,7 +47,7 @@ At a high level, Metopus is split into:
 - a public web layer for marketing, artist discovery and fan capture
 - authenticated app surfaces for artists and fans
 - native Android and iOS clients
-- shared Rust logic where consistency and performance matter
+- shared Rust logic, including browser WebAssembly bridges where consistency and performance matter
 - Supabase/PostgreSQL infrastructure for authentication, data and storage
 - Cloudflare infrastructure for public web deployment and media-adjacent work
 

@@ -13,13 +13,13 @@ flowchart LR
     end
 
     subgraph AppSurfaces["App Surfaces"]
-        WebApp["Private web app"]
+        WebApp["Private web app<br/>React / TypeScript / WASM"]
         Android["Native Android"]
         IOS["Native iOS"]
     end
 
     subgraph Shared["Shared Logic"]
-        Rust["Rust domain / visual logic"]
+        Rust["Rust / WebAssembly<br/>domain and visual logic"]
     end
 
     subgraph Backend["Backend and Infrastructure"]
@@ -63,13 +63,13 @@ The native apps are used where performance, device integration, notifications an
 
 ## Shared Rust Logic
 
-Rust is used as a shared logic direction where it helps consistency, performance or cross-platform maintainability.
+Rust is used as a shared logic direction where it helps consistency, performance or cross-platform maintainability. In the private web app, selected Rust logic is compiled to WebAssembly for browser use.
 
 Public-safe examples include:
 
 - shared domain decisions
 - shared visual or rendering logic
-- consistent behaviour across Android and iOS
+- consistent behaviour across web, Android and iOS
 - request-building or rules logic where duplication would create drift
 
 This case study deliberately avoids publishing proprietary source code or detailed implementation rules.
