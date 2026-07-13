@@ -1,0 +1,17 @@
+.env
+.env.*
+*.key
+*.pem
+*.p12
+*.jks
+*.keystore
+*.sqlite
+*.db
+node_modules/
+dist/
+build/
+.DS_Store
+Thumbs.db
+private/
+raw-assets/
+draft-assets/
