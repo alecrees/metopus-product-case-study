@@ -19,6 +19,8 @@ This case study exists to show the non-confidential parts of the work:
 - shared Rust logic direction
 - testing and device coverage
 - AI-assisted development workflow
+- selected implementation map
+- screenshot and walkthrough plan
 - confidentiality and publication boundaries
 
 ## My Role
@@ -62,10 +64,28 @@ docs/
   03-role-and-implementation.md
   04-ai-assisted-development-workflow.md
   05-confidentiality-boundaries.md
+  06-selected-implementation-map.md
+  07-testing-and-device-coverage.md
+  08-screenshots-and-walkthrough.md
 assets/
   screenshots/
   diagrams/
 ```
+
+## Why The Source Is Private
+
+Metopus is an active commercial product. The production repositories contain protected product logic, private implementation decisions, unfinished commercial work, security-sensitive backend details, app/client code, generated bindings and assets that should not be public.
+
+Instead of publishing the source, this case study provides:
+
+- a public-safe architecture map
+- a selected implementation breakdown
+- testing and device-coverage notes
+- AI-assisted workflow explanation
+- confidentiality boundaries
+- a planned screenshot/walkthrough layer
+
+I can discuss architecture, implementation decisions and selected technical details in interview where appropriate.
 
 ## What Recruiters Can Review
 
