@@ -1,12 +1,14 @@
 # Screenshots and Walkthrough Plan
 
-This document defines what visual material can be added to the public case study after review.
+This document defines the visual material that can be added to the public case study after review.
 
 No screenshot or video should be added unless it passes the asset review checklist.
 
 ## Goal
 
-The case study should eventually show enough visual evidence for a recruiter or hiring manager to understand that Metopus is a real product effort, without exposing protected source code, private app data, credentials, admin areas or unreleased commercial mechanics.
+The case study should show enough visual evidence for a recruiter or hiring manager to understand that Metopus is a real product effort, without exposing protected source code, private app data, credentials, admin areas or unreleased commercial mechanics.
+
+Visual assets are currently withheld by design. The next pass is a review and redaction pass, not a rush to publish raw screenshots.
 
 ## Recommended Visual Set
 
@@ -17,7 +19,7 @@ Use:
 - public homepage screenshots
 - public artist/profile style screenshots
 - signup or mailing-list public flow screenshots
-- responsive desktop/mobile pair if available
+- responsive desktop/mobile pair after review
 
 Caption focus:
 
@@ -39,7 +41,7 @@ Avoid:
 
 Use only if all private data is replaced, hidden or mocked.
 
-Candidate views:
+Possible views after redaction:
 
 - app shell/navigation
 - culture/world visual surface
@@ -87,7 +89,7 @@ Avoid:
 
 Use:
 
-- foundation/parity screenshots once clean
+- foundation/parity screenshots after privacy review
 - app shell screenshots
 - Rust binding or card-gallery evidence only if visually safe
 
@@ -153,7 +155,7 @@ Avoid filenames containing:
 - "admin"
 - "private"
 
-## Recommended Next Pass
+## Screenshot Intake Workflow
 
 1. Collect 10-15 candidate screenshots locally.
 2. Review them visually.

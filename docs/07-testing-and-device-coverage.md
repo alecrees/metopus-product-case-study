@@ -79,7 +79,7 @@ Public-safe observations from device testing:
 - older mobile GPUs can show different colour, blending and shader behaviour, flagged for future visual tuning
 - the practical response is graceful graphics-profile scaling rather than replacing the whole renderer
 
-## Planned Graphics Profile Direction
+## Graphics Profile Direction
 
 The testing notes support a device-aware graphics profile system:
 

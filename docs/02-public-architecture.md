@@ -53,7 +53,7 @@ The practical requirement is that a public artist profile should be fast, readab
 
 ## Authenticated App Surfaces
 
-Metopus is planned across:
+Metopus is structured across:
 
 - a client-first private web app shell for selected app workflows
 - a native Android app

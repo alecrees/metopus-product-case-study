@@ -12,6 +12,7 @@ The production Metopus repositories are private because the product contains pro
 
 This case study exists to show the non-confidential parts of the work:
 
+- executive summary for quick review
 - product framing and problem definition
 - cross-platform architecture
 - public web and app-surface strategy
@@ -20,7 +21,8 @@ This case study exists to show the non-confidential parts of the work:
 - testing and device coverage
 - AI-assisted development workflow
 - selected implementation map
-- screenshot and walkthrough plan
+- screenshot and walkthrough intake plan
+- public-safe diagrams
 - confidentiality and publication boundaries
 
 ## My Role
@@ -59,6 +61,7 @@ The public diagram intentionally avoids private schemas, security rules, admin f
 
 ```text
 docs/
+  00-executive-summary.md
   01-product-overview.md
   02-public-architecture.md
   03-role-and-implementation.md
@@ -67,6 +70,8 @@ docs/
   06-selected-implementation-map.md
   07-testing-and-device-coverage.md
   08-screenshots-and-walkthrough.md
+  09-public-diagrams.md
+  10-public-walkthrough-script.md
 assets/
   screenshots/
   diagrams/
@@ -83,7 +88,7 @@ Instead of publishing the source, this case study provides:
 - testing and device-coverage notes
 - AI-assisted workflow explanation
 - confidentiality boundaries
-- a planned screenshot/walkthrough layer
+- a screenshot/walkthrough intake plan
 
 I can discuss architecture, implementation decisions and selected technical details in interview where appropriate.
 
@@ -102,4 +107,4 @@ It demonstrates:
 
 ## Publication Status
 
-Initial public version. Screenshots, diagrams and live links should be added only after a privacy and IP check.
+Documentation-first case-study version. Screenshots, clips and live links are intentionally withheld until a privacy and IP check is complete.

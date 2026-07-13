@@ -197,7 +197,7 @@ Not public:
 
 ## What This Proves
 
-The useful evidence is not that every file can be published. The useful evidence is that the product has been planned and built as a real multi-surface system:
+The useful evidence is not that every file can be published. The useful evidence is that the product has been designed and built as a real multi-surface system:
 
 - public web for discovery and conversion
 - private app surfaces for deeper workflows
