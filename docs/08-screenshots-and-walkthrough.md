@@ -1,168 +1,43 @@
-# Screenshots and Walkthrough Plan
+# Screenshot notes
 
-This document defines the visual material that can be added to the public case study after review.
+The screenshots in this repository use test/product data and were selected to show breadth without exposing production source, credentials, private customer data or protected backend details.
 
-No screenshot or video should be added unless it passes the asset review checklist.
+## Artist World
 
-## Goal
+![Metopus Artist World](../assets/screenshots/artist-world.jpeg)
 
-The case study should show enough visual evidence for a recruiter or hiring manager to understand that Metopus is a real product effort, without exposing protected source code, private app data, credentials, admin areas or unreleased commercial mechanics.
+An artist-owned profile hub connecting identity, music, community and commercial tools.
 
-Visual assets are currently withheld by design. The next pass is a review and redaction pass, not a rush to publish raw screenshots.
+## Artist cards
 
-## Recommended Visual Set
+![Metopus artist cards](../assets/screenshots/artist-cards.jpeg)
 
-### 1. Public Website
+The collectible card surface combines discovery, artist identity, community entry points and an original visual treatment.
 
-Use:
+## Backstage audio review
 
-- public homepage screenshots
-- public artist/profile style screenshots
-- signup or mailing-list public flow screenshots
-- responsive desktop/mobile pair after review
+![Metopus audio review](../assets/screenshots/audio-review.jpeg)
 
-Caption focus:
+A working audio surface with versions, timestamped feedback and approval stages designed around artist collaboration.
 
-- public positioning
-- responsive design
-- product onboarding
-- public/private boundary
-- SEO/shareability
+## Calendar
 
-Avoid:
+![Metopus calendar](../assets/screenshots/calendar.jpeg)
 
-- admin pages
-- analytics panels
-- environment-specific URLs
-- private contact data
-- unpublished campaign claims
+Rehearsals, gigs and release milestones shown in one artist workspace.
 
-### 2. Private Web App Shell
+## AI workflow controls
 
-Use only if all private data is replaced, hidden or mocked.
+![Pre-launch Metopus AI workflow controls](../assets/screenshots/ai-controls.jpeg)
 
-Possible views after redaction:
+A pre-launch settings prototype for assistance modes, task-writing permissions and room-scoped Backstage Memory. This is evidence of the product and interaction design; it is not presented as a production-shipped agent system.
 
-- app shell/navigation
-- culture/world visual surface
-- lab/demo card or visual surface
-- settings/onboarding state where no private data appears
+## Volt ledger
 
-Caption focus:
+![Metopus Volt ledger](../assets/screenshots/volt-ledger.jpeg)
 
-- React app shell
-- Rust/WebAssembly integration
-- visual-system testing
-- safety/onboarding checks
+A transparent record of participation and progression across artist and platform contexts.
 
-Avoid:
+## Walkthrough status
 
-- real user accounts
-- private artist/fan data
-- admin controls
-- database IDs
-- hidden product mechanics
-
-### 3. Native Android
-
-Use:
-
-- public-safe app screenshots
-- device comparison screenshots if no private data appears
-- visual-surface screenshots
-
-Caption focus:
-
-- native performance
-- real-device validation
-- graphics profile considerations
-- Android as iOS parity reference
-
-Avoid:
-
-- APK names/build paths
-- debug overlays with sensitive paths
-- private user or artist data
-- unreleased commercial mechanics
-
-### 4. Native iOS
-
-Use:
-
-- foundation/parity screenshots after privacy review
-- app shell screenshots
-- Rust binding or card-gallery evidence only if visually safe
-
-Caption focus:
-
-- SwiftUI native client
-- Rust shared-logic binding
-- parity from Android reference
-- App Store readiness thinking
-
-Avoid:
-
-- Apple team/signing material
-- private TestFlight data
-- real account details
-
-### 5. Architecture Diagram
-
-Use:
-
-- a clean static export of the public-safe architecture diagram
-- optionally a "surface map" diagram showing public web, private web, Android, iOS, Rust/WASM and Supabase
-
-Caption focus:
-
-- multi-surface architecture
-- clear confidentiality boundaries
-- why source remains private
-
-## Asset Review Checklist
-
-Before adding an image or video:
-
-- No private email address is visible.
-- No API key, token, environment variable, QR secret, table name or diagnostic path is visible.
-- No Supabase project ID or internal admin route is visible.
-- No private fan, artist, bandmate or customer data is visible.
-- No unfinished pricing or monetisation logic is shown.
-- No protected product mechanics are shown in enough detail to copy.
-- No DCE or third-party asset is used unless usage is approved.
-- The screenshot still makes sense with a caption.
-- The filename is generic and public-safe.
-
-## Suggested File Naming
-
-Use simple names:
-
-- `public-homepage-desktop.png`
-- `public-homepage-mobile.png`
-- `artist-profile-public.png`
-- `web-app-shell-redacted.png`
-- `wasm-visual-surface.png`
-- `android-device-test-redacted.png`
-- `ios-shell-redacted.png`
-
-Avoid filenames containing:
-
-- account names
-- emails
-- database IDs
-- internal route names
-- secrets
-- "admin"
-- "private"
-
-## Screenshot Intake Workflow
-
-1. Collect 10-15 candidate screenshots locally.
-2. Review them visually.
-3. Keep only 4-6 strong images.
-4. Redact/crop where needed.
-5. Compress for GitHub.
-6. Add captions in this document.
-7. Link the strongest two from the main README.
-
-The goal is not quantity. The goal is credible visual proof without creating IP or privacy risk.
+A short narrated product walkthrough is planned. It should focus on the product problem, current build, cross-platform architecture, original visual work and the distinction between working features and roadmap R&D.

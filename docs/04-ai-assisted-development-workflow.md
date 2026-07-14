@@ -1,60 +1,40 @@
-# AI-Assisted Development Workflow
+# AI-assisted development workflow
 
-AI-assisted development is part of the Metopus workflow. It is used as an acceleration and collaboration layer, not as a replacement for product ownership or review.
+AI tools are used throughout Metopus, but responsibility does not move to the tool.
 
-## How AI Is Used
+## Where AI helps
 
-AI tools are used for:
+- research and comparison of technical approaches
+- breaking large product goals into constrained plans
+- scaffolding and boilerplate for review
+- debugging regressions and exploring likely causes
+- test ideas, edge cases and documentation
+- handoffs between long development sessions
 
-- breaking large product goals into implementation plans
-- comparing technical approaches
-- scaffolding code for review
-- debugging errors and regressions
-- writing tests and test plans
-- refactoring and documentation support
-- summarising handoffs between work sessions
-- checking edge cases and alternative designs
+## Review loop
 
-## Human Responsibility
+1. Define the user problem and the boundary of the change.
+2. Check the existing architecture and relevant product documents.
+3. Use AI to accelerate analysis or implementation.
+4. Review the output rather than accepting it on authority.
+5. Build, test and inspect the behaviour on the relevant platform.
+6. Check integration, error paths, privacy and device implications.
+7. Record decisions that affect later work.
 
-The responsibilities that remain human-owned include:
+## Human-owned decisions
 
-- product direction
-- user and artist needs
-- architecture decisions
-- privacy and commercial boundaries
-- implementation review
-- integration with existing code
-- test selection and device validation
-- final quality judgement
+- product direction and user needs
+- original visual and interaction design
+- architecture and commercial boundaries
+- whether generated work fits the existing system
+- test selection and acceptance criteria
+- privacy, safety and publication decisions
+- final integration and quality
 
-## Practical Workflow
+## Public wording
 
-The normal pattern is:
+An accurate summary is:
 
-1. Define the user problem or product goal.
-2. Turn the goal into a constrained technical plan.
-3. Use AI tools to accelerate implementation or analysis.
-4. Review the output against the existing architecture.
-5. Run tests, inspect behaviour and check device/browser results.
-6. Iterate until the feature or fix is coherent.
-7. Document the decision if it affects future work.
+> I use AI-assisted development tools to accelerate research, planning, implementation, testing and debugging. I review and test the output, integrate it into the wider architecture and remain responsible for the product and finished work.
 
-## Why This Matters
-
-Metopus is broad: public website, private app, native Android, native iOS, shared Rust logic, database-backed workflows, visual systems and product strategy.
-
-AI assistance helps move across that breadth, but the value is not blind code generation. The value is being able to ask better questions, inspect outputs critically, integrate changes into a wider system and keep product decisions grounded.
-
-## Accurate Public Wording
-
-Recommended wording:
-
-> I use AI-assisted development tools to accelerate prototyping, implementation, testing and debugging. I review and test outputs, integrate them into the wider architecture, and remain responsible for product direction, technical decisions and final quality.
-
-Avoid wording that implies:
-
-- the product was built without AI support
-- AI made the product independently
-- senior specialist expertise in every language or platform used
-- confidential source code can be made public
+This is intentionally more precise than either hiding the use of AI or presenting generated output as independent product development.

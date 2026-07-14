@@ -1,70 +1,54 @@
-# Role and Implementation
+# Role and implementation decisions
 
 ## Role
 
-Founder and product developer.
+Founder and product developer at Metopida Ltd.
 
-My responsibilities include:
+My work on Metopus includes:
 
-- product framing and feature planning
-- interface direction and content strategy
-- public website and artist-profile planning
-- cross-platform architecture decisions
-- front-end implementation and testing
-- native mobile planning across Android and iOS
-- shared Rust logic direction
-- Supabase-backed workflow planning and integration
-- AI-assisted development workflow design
-- QA, debugging, device testing and iteration
+- turning industry problems into product requirements
+- product scope, roadmap and commercial planning
+- information architecture, UX and original visual design
+- web, mobile and shared-logic architecture
+- implementation, integration and code review
+- Supabase-backed workflow and infrastructure planning
+- performance profiling and real-device testing
+- accessibility, age-safety and capability-boundary work
+- technical documentation and cross-session handoff material
 
-## Implementation Areas
+## From Flutter MVP to native clients
 
-### Product and Requirements
+The Flutter MVP was useful because it made a wide feature set testable early. It also provided a concrete reference for product structure and interaction rather than leaving the idea in documents.
 
-Metopus began as a direct-to-fan product idea and has developed into a wider system covering public discovery, artist-owned audience capture, mobile app experiences, artist tools and shared product logic.
+The later move to native clients was driven by the product's graphics, device integration and interaction requirements:
 
-The useful implementation evidence is not simply the size of the codebase. It is the ability to keep the product coherent while splitting work across public web, authenticated app surfaces, native clients, shared logic and backend infrastructure.
+- Kotlin and Jetpack Compose for Android
+- SwiftUI for the iOS parity port
+- Rust for behaviour that should remain consistent across clients
+- WGPU/WGSL for performance-sensitive original visual systems
 
-### Public Web and Content
+The iOS work is a port in progress, not a claim that every Android screen has already reached parity.
 
-The public web surface is designed to explain the product, give artists and fans clear entry points, and support public artist profiles that can be shared, indexed and linked from real-world campaigns.
+## Shared rules rather than three copies
 
-Key concerns:
+Client-only tables and rules can drift. The preferred direction is:
 
-- clear public copy
-- responsive layout
-- SEO and social sharing
-- artist profile structure
-- mailing-list capture
-- public/private data boundaries
-- accessibility and mobile behaviour
+```text
+interface
+  -> typed action or shared rule
+  -> validation and permission decision
+  -> data/API operation
+  -> result rendered by the client
+```
 
-### Cross-Platform App Direction
+The same principle supports both native clients and later AI workflows. An assistant should propose the same validated actions used by the interface rather than invent a separate route around the product.
 
-The product explores separate web, Android and iOS surfaces rather than forcing every workflow into one framework.
+## Visual-system ownership
 
-Reasons:
+The card treatments, cellular navigation and spiral/orbit motion language are original product design work. AI tools have helped with implementation, boilerplate, debugging and alternative approaches, but the underlying design, interaction intent and acceptance decisions are human-owned.
 
-- native clients can provide better performance and device integration
-- web remains useful for public discovery, artist tooling and lightweight access
-- shared logic reduces duplicated behaviour where consistency matters
-- each surface can be scoped around the job it does best
+## Documentation as engineering work
 
-### Testing and Device Coverage
+The project includes architecture plans, migration notes, feature specifications, test logs, safety audits and implementation handoffs. These documents are used to keep decisions traceable across a product spanning web, Android, iOS, Rust, graphics and backend work.
 
-The project has involved practical testing across multiple Android and iOS devices, including older and newer hardware. This matters because visual systems, animation, navigation, auth and app startup behaviour often fail differently across real devices than they do in a single simulator or desktop browser.
-
-Public-safe testing discussion can include:
-
-- responsive layout checks
-- native-device checks
-- visual parity checks
-- performance profiling at a high level
-- browser compatibility and fallback decisions
-- launch-context metrics where evidence is available
-
-### Documentation and Handoff
-
-A large amount of project work exists as planning, implementation notes, migration plans, QA notes and technical handoff material. That documentation is part of the product work: it keeps complex cross-platform decisions traceable and makes the system more maintainable.
-
-This public case study should act as a clean summary layer, not a dump of private planning documents.
+This repository is the concise review layer. It does not publish the private planning archive.

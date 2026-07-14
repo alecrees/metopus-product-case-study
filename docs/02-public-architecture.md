@@ -1,94 +1,72 @@
-# Public Architecture
+# Public architecture
 
-This document describes the public-safe architecture. It intentionally omits private source code, schema details, security rules, proprietary mechanics and unreleased implementation decisions.
+This is a deliberately high-level view. It omits private schemas, policies, credentials, admin operations and proprietary product mechanics.
 
-## High-Level System
+## System map
 
 ```mermaid
 flowchart LR
-    subgraph PublicWeb["Public Web"]
-        Marketing["Marketing site"]
-        Profiles["Artist profiles"]
-        Capture["Mailing-list capture"]
+    subgraph Public["Public surfaces"]
+        Site["Product website<br/>Next.js / React / TypeScript"]
+        Profiles["Public artist routes<br/>discovery and fan capture"]
     end
 
-    subgraph AppSurfaces["App Surfaces"]
-        WebApp["Private web app<br/>React / TypeScript / WASM"]
-        Android["Native Android"]
-        IOS["Native iOS"]
+    subgraph Clients["Authenticated clients"]
+        Web["Browser app<br/>React / TypeScript"]
+        Android["Android<br/>Kotlin / Compose"]
+        IOS["iOS port<br/>SwiftUI"]
     end
 
-    subgraph Shared["Shared Logic"]
-        Rust["Rust / WebAssembly<br/>domain and visual logic"]
+    subgraph Shared["Shared product layer"]
+        Rust["Rust core<br/>domain logic, validation and state"]
+        Graphics["WGPU / WGSL<br/>visual systems"]
+        Wasm["WebAssembly bridges"]
     end
 
-    subgraph Backend["Backend and Infrastructure"]
-        Supabase["Supabase / PostgreSQL"]
-        Storage["Media storage"]
-        Cloudflare["Cloudflare deployment"]
+    subgraph Platform["Data and delivery"]
+        Supabase["Supabase / PostgreSQL<br/>auth, data and storage"]
+        Cloudflare["Cloudflare<br/>public deployment and media"]
     end
 
-    Marketing --> Profiles
-    Profiles --> Capture
-    Capture --> Supabase
-    WebApp --> Supabase
-    Android --> Rust
-    IOS --> Rust
-    WebApp --> Rust
-    Rust --> Supabase
-    Marketing --> Cloudflare
+    Site --> Profiles
+    Profiles --> Supabase
+    Site --> Cloudflare
+    Rust --> Wasm
+    Wasm --> Web
+    Rust --> Android
+    Rust --> IOS
+    Rust --> Graphics
+    Web --> Supabase
+    Android --> Supabase
+    IOS --> Supabase
 ```
 
-## Public Web Layer
+## Responsibility split
 
-The public web layer is intended for:
+### Public web
 
-- marketing pages
-- SEO-friendly public artist profiles
-- public campaign entry points
-- mailing-list and QR-code flows
-- app handoff for deeper authenticated experiences
+The public layer handles product explanation, search-friendly artist routes, public campaign entry points and fan capture. It must work without an installed app or existing account.
 
-The practical requirement is that a public artist profile should be fast, readable, shareable and indexable. It should not depend on the user already having the app installed.
+### Browser app
 
-## Authenticated App Surfaces
+The browser app supports web-appropriate artist and fan workflows. React and TypeScript own the shell, while selected rules and visual behaviour can be supplied by Rust compiled to WebAssembly.
 
-Metopus is structured across:
+### Native clients
 
-- a client-first private web app shell for selected app workflows
-- a native Android app
-- a native iOS app
+Android is the current native reference. The iOS client is being ported in SwiftUI against documented Android behaviour rather than rebuilt from screenshots or memory.
 
-The native apps are used where performance, device integration, notifications and polished interaction matter. The web app is used where browser access, artist tooling, admin workflows or lighter fan journeys make more sense.
+### Shared Rust core
 
-## Shared Rust Logic
+Rust is used where duplicated client logic would create drift. Its responsibilities include domain decisions, validation, state, native bindings and selected rendering systems. It is not used merely to add another language to the stack.
 
-Rust is used as a shared logic direction where it helps consistency, performance or cross-platform maintainability. In the private web app, selected Rust logic is compiled to WebAssembly for browser use.
+### Graphics
 
-Public-safe examples include:
+Custom WGPU/WGSL surfaces support the card, cellular and motion language. Platform clients still own lifecycle, touch, accessibility and device integration around those surfaces.
 
-- shared domain decisions
-- shared visual or rendering logic
-- consistent behaviour across web, Android and iOS
-- request-building or rules logic where duplication would create drift
+### Backend and delivery
 
-This case study deliberately avoids publishing proprietary source code or detailed implementation rules.
+Supabase/PostgreSQL provides authentication, data and storage services. Cloudflare supports public deployment and media-adjacent infrastructure. Important permission and age decisions are intended to have shared or server-side enforcement rather than depend on UI visibility.
 
-## Backend and Infrastructure
+## Main tradeoff
 
-Metopus uses Supabase/PostgreSQL for backend-adjacent product needs such as authentication, database-backed state, storage, public capture flows and server-side validation.
-
-Cloudflare is used around public web deployment and related infrastructure decisions.
-
-The public case study can discuss technology choices and tradeoffs, but should not publish service-role logic, private policy details, admin routes, secrets, migrations that reveal protected mechanics, or security-sensitive implementation specifics.
-
-## Main Tradeoff
-
-The core architectural tradeoff is balancing:
-
-- the speed of web delivery
-- the polish and performance of native clients
-- the maintainability of shared logic
-- the commercial need to keep certain product mechanics private
-
-The product therefore uses public documentation and screenshots as proof, while keeping the production repositories private.
+The architecture balances web reach, native interaction quality, shared behaviour and commercial confidentiality. This creates more integration work than a single-client application, but it prevents the public website, browser app and native clients from being forced into the same technical shape.

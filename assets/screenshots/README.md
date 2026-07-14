@@ -1,18 +1,12 @@
-# Screenshots
+# Screenshot set
 
-Place public-safe screenshots here after review.
+These images use test/product data and were selected for this public case study.
 
-Good candidates:
+- `artist-world.jpeg` - artist identity and product navigation
+- `artist-cards.jpeg` - collectible artist-card surface
+- `audio-review.jpeg` - timestamped Backstage demo review
+- `calendar.jpeg` - rehearsals, gigs and release planning
+- `ai-controls.jpeg` - pre-launch AI workflow settings prototype
+- `volt-ledger.jpeg` - participation and progression ledger
 
-- public metopus.com pages
-- public artist-profile mockups or screenshots
-- non-confidential marketing visuals
-- cropped visual-system examples with no private data
-
-Do not add:
-
-- admin screens
-- private app data
-- credentials, keys, routes or diagnostics
-- unreleased sensitive product mechanics
-- protected band IP unless explicitly approved
+Do not replace them with raw development captures without checking for private data, credentials, internal routes or protected product details.

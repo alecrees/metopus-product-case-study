@@ -1,111 +1,135 @@
-# Metopus Product Case Study
+<p align="center">
+  <img src="assets/brand/metopus-logo-dark.png" alt="Metopus" width="360">
+</p>
 
-Metopus is an early-stage, commercially sensitive platform for artists and fan communities. The product explores direct-to-fan community, public artist profiles, mailing-list capture, interactive cards, artist tools, native mobile experiences and shared product logic across platforms.
+# Metopus product and engineering case study
 
-This repository is a public, documentation-only case study. It does not contain production source code, private database structure, credentials, proprietary mechanics or commercial implementation details.
+Metopus is a mobile and web platform for artists and fan communities, developed by Alec Rees through [Metopida Ltd](https://metopida.com/). It grew from roughly two decades of first-hand music-industry experience and three years of product research, prototyping and development.
 
-No open-source licence is granted for this repository. It is public for portfolio and case-study review only.
+This repository documents the product, architecture and engineering decisions without publishing the commercial source code.
 
-## Why This Exists
+[Live product site](https://metopus.com/) | [Portfolio case study](https://www.alecreesdrummer.com/#metopus) | [LinkedIn](https://www.linkedin.com/in/alec-rees)
 
-The production Metopus repositories are private because the product contains protected intellectual property, security-sensitive implementation work and unfinished commercial logic.
+## Product surfaces
 
-This case study exists to show the non-confidential parts of the work:
+<p align="center">
+  <img src="assets/screenshots/artist-world.jpeg" alt="Metopus Artist World" width="30%">
+  <img src="assets/screenshots/artist-cards.jpeg" alt="Metopus artist-card collection" width="30%">
+  <img src="assets/screenshots/audio-review.jpeg" alt="Metopus timestamped audio review" width="30%">
+</p>
 
-- executive summary for quick review
-- product framing and problem definition
-- cross-platform architecture
-- public web and app-surface strategy
-- front-end and visual-system decisions
-- shared Rust logic direction
-- testing and device coverage
-- AI-assisted development workflow
-- selected implementation map
-- screenshot and walkthrough intake plan
-- public-safe diagrams
-- confidentiality and publication boundaries
+<p align="center">
+  <img src="assets/screenshots/calendar.jpeg" alt="Metopus working calendar" width="30%">
+  <img src="assets/screenshots/ai-controls.jpeg" alt="Pre-launch Metopus AI workflow controls" width="30%">
+  <img src="assets/screenshots/volt-ledger.jpeg" alt="Metopus Volt participation ledger" width="30%">
+</p>
 
-## My Role
+- **Artist World** connects public identity, music, community and artist tools.
+- **Artist cards** use an original collectible visual system for discovery and fan participation.
+- **Backstage audio review** supports versions, timestamped notes and approval stages.
+- **Calendar** brings rehearsals, gigs and release milestones into one workspace.
+- **AI workflow controls** show the pre-launch interface for assistance modes and room-scoped memory.
+- **Volt** records participation and progression through a transparent ledger.
 
-Founder and product developer.
+## The problem
 
-I defined the product direction, planned the system architecture, built and tested public-facing web surfaces, worked across web/mobile/shared-logic concerns, and used AI-assisted development tools to accelerate implementation while retaining responsibility for review, integration and quality.
+Artists increasingly depend on platforms whose algorithms, reach and audience relationships they do not control. Metopus is designed to give artists a public home, direct fan capture and deeper community tools, while also supporting the practical work behind releases, rehearsals, events and live performance.
 
-This is not presented as a solo claim of senior expertise in every technology used. The useful evidence is product ownership, system thinking, implementation judgement, technical communication, integration and testing across a broad product surface.
+The goal is not to reproduce another social feed. It is to connect artist identity, fan participation and day-to-day artist workflows in one product.
 
-## Public-Safe Architecture
+## My role
+
+**Founder and product developer.** I am responsible for product direction, feature research, UX and original visual design, architecture, implementation and integration, testing, documentation and commercial planning.
+
+I use AI tools for research, planning, scaffolding, debugging and review. I check the output against the existing system, test it on real hardware and remain responsible for the design, technical decisions, integration and final quality.
+
+## Current build
+
+| Area | Current evidence | Status |
+| --- | --- | --- |
+| Android | Kotlin and Jetpack Compose client, native navigation, app workflows and custom graphics surfaces | Working implementation |
+| iOS | SwiftUI client, authentication foundation, design system, Rust bindings and physical-device deployment | Native parity port in progress |
+| Shared core | Rust domain logic, validation, state and rendering shared through native bindings and selected WebAssembly builds | Working implementation |
+| Graphics | Original WGPU/WGSL card and environmental visual systems with device-aware performance work | Working implementation |
+| Web | Live Next.js/React public site plus a React/TypeScript app foundation with selected Rust/WASM integration | Live and in development |
+| Backend | Supabase/PostgreSQL for authentication, data and storage; Cloudflare for public deployment and media infrastructure | Working infrastructure |
+
+The first MVP was built in Flutter. That reference helped validate the product and interaction model before the move to native Android and iOS clients with a shared Rust core.
+
+## Architecture
 
 ```mermaid
 flowchart TD
-    A["Public marketing site<br/>Next.js / React / TypeScript"] --> B["Public artist profiles<br/>SEO and fan capture"]
-    C["Private web app shell<br/>React / TypeScript / WASM"] --> F["Supabase / PostgreSQL<br/>auth, data, storage, edge logic"]
-    C --> G["Shared Rust / WebAssembly logic<br/>domain and visual systems"]
-    D["Native Android app<br/>Kotlin"] --> G
-    E["Native iOS app<br/>SwiftUI"] --> G
-    G --> F
-    B --> F
+    Public["Public web<br/>Next.js / React / TypeScript"] --> Backend["Supabase / PostgreSQL<br/>auth, data and storage"]
+    Rust["Shared Rust core<br/>domain logic and WGPU"] -->|native bindings| Android["Native Android<br/>Kotlin / Compose"]
+    Rust -->|native bindings| IOS["Native iOS port<br/>SwiftUI"]
+    Rust -->|selected builds| Wasm["WebAssembly"]
+    Wasm --> WebApp["Authenticated web app<br/>React / TypeScript"]
+    Android --> Backend
+    IOS --> Backend
+    WebApp --> Backend
+    Public --> Edge["Cloudflare<br/>deployment and media"]
 ```
 
-At a high level, Metopus is split into:
+The split is deliberate: public web routes prioritise discovery and accessibility; native clients handle richer interaction and device integration; Rust owns logic that should not drift between platforms.
 
-- a public web layer for marketing, artist discovery and fan capture
-- authenticated app surfaces for artists and fans
-- native Android and iOS clients
-- shared Rust logic, including browser WebAssembly bridges where consistency and performance matter
-- Supabase/PostgreSQL infrastructure for authentication, data and storage
-- Cloudflare infrastructure for public web deployment and media-adjacent work
+## Selected engineering decisions
 
-The public diagram intentionally avoids private schemas, security rules, admin flows, proprietary product mechanics and unreleased business logic.
+### MVP to native
 
-## Repository Structure
+Flutter accelerated the first end-to-end MVP. The native rebuild uses Kotlin/Compose and SwiftUI where platform integration, graphics performance and app behaviour matter, while Rust reduces duplicated rules between clients.
 
-```text
-docs/
-  00-executive-summary.md
-  01-product-overview.md
-  02-public-architecture.md
-  03-role-and-implementation.md
-  04-ai-assisted-development-workflow.md
-  05-confidentiality-boundaries.md
-  06-selected-implementation-map.md
-  07-testing-and-device-coverage.md
-  08-screenshots-and-walkthrough.md
-  09-public-diagrams.md
-  10-public-walkthrough-script.md
-  11-recording-script-and-shot-list.md
-assets/
-  screenshots/
-  diagrams/
-```
+### Original renderer and motion system
 
-## Why The Source Is Private
+Metopus uses a bespoke visual language rather than a standard component theme. Artist cards, cellular navigation and spiral/orbit motion were designed for the product and implemented through Rust, WGPU/WGSL and WebAssembly where appropriate. Real-device testing has informed render profiles and graceful fallbacks for different mobile GPU classes.
 
-Metopus is an active commercial product. The production repositories contain protected product logic, private implementation decisions, unfinished commercial work, security-sensitive backend details, app/client code, generated bindings and assets that should not be public.
+### Commandable artist tools
 
-Instead of publishing the source, this case study provides:
+Calendar, audio review, tour, release and other artist tools are being structured around typed actions, validation, permissions and audit metadata. The same actions can later be used by the interface or proposed by an AI workflow without giving an agent unrestricted access to product data.
 
-- a public-safe architecture map
-- a selected implementation breakdown
-- testing and device-coverage notes
-- AI-assisted workflow explanation
-- confidentiality boundaries
-- a screenshot/walkthrough intake plan
+### Safety outside the UI
 
-I can discuss architecture, implementation decisions and selected technical details in interview where appropriate.
+Age, entitlement and permission decisions should not rely on a single screen hiding a control. The architecture places important rules in shared logic and server-side checks, with the clients rendering the resulting capabilities.
 
-## What Recruiters Can Review
+## AI product R&D
 
-This repository is meant to support roles where product thinking, technical communication, front-end judgement, implementation support, digital content, technical support, QA, onboarding or creative technology are relevant.
+Metopus includes a five-role agent architecture for artist coordination, opportunity discovery, events and ticketing, promotion and tour logistics. The user-facing coordinator is designed to work inside Backstage rather than as a generic chatbot.
 
-It demonstrates:
+Key design work includes:
 
-- the ability to turn an ambiguous product idea into structured systems
-- a practical understanding of cross-platform product tradeoffs
-- clear public/private boundaries around commercial software
-- familiarity with modern web, mobile and backend-adjacent tooling
-- a responsible approach to AI-assisted development
-- attention to testing, device coverage and user experience
+- **Backstage Memory:** artist-, room- and person-scoped context for decisions, responsibilities and work already in motion.
+- **Typed actions:** structured tool inputs with permissions, validation, risk levels and audit records.
+- **Human approval:** higher-impact actions are proposed for confirmation rather than executed silently.
+- **Sandbox testing:** agent roles and behaviour are tested separately before production integration.
 
-## Publication Status
+The agent system is pre-launch R&D, not a shipped claim. Later research also covers three separate areas: user-requested product sourcing and procurement, **Road Grade** trust signals based on real professional use, and gig/opportunity discovery.
 
-Documentation-first case-study version. Screenshots, clips and live links are intentionally withheld until a privacy and IP check is complete.
+## Testing
+
+The test approach spans:
+
+- Rust tests and native binding checks
+- Android reference behaviour and iOS parity work
+- browser, TypeScript and WebAssembly integration
+- real Android and iOS hardware across newer and older GPU classes
+- responsive layout, touch behaviour and large system text
+- graphics profiling, fallbacks and device-aware quality settings
+- auth, onboarding, age and capability boundaries
+
+Exact device details, private logs and profiler captures are intentionally excluded. See [testing and device coverage](docs/07-testing-and-device-coverage.md) for the public summary.
+
+## Further detail
+
+- [Product scope and status](docs/01-product-overview.md)
+- [Public architecture](docs/02-public-architecture.md)
+- [Role and implementation decisions](docs/03-role-and-implementation.md)
+- [AI-assisted development workflow](docs/04-ai-assisted-development-workflow.md)
+- [Selected implementation map](docs/06-selected-implementation-map.md)
+- [Screenshot notes](docs/08-screenshots-and-walkthrough.md)
+- [Confidentiality boundaries](docs/05-confidentiality-boundaries.md)
+
+## Why the source is private
+
+Metopus is an active commercial product. Its production repositories contain proprietary product logic, security-sensitive backend work, unreleased features, private configuration and protected assets. This case study provides reviewable evidence without turning the product into an open-source release.
+
+Architecture, implementation decisions and selected technical details can be discussed in interview where appropriate.
