@@ -59,19 +59,34 @@ The first MVP was built in Flutter. That reference helped validate the product a
 ## Architecture
 
 ```mermaid
-flowchart TD
-    Public["Public web<br/>Next.js / React / TypeScript"] --> Backend["Supabase / PostgreSQL<br/>auth, data and storage"]
-    Rust["Shared Rust core<br/>domain logic and WGPU"] -->|native bindings| Android["Native Android<br/>Kotlin / Compose"]
-    Rust -->|native bindings| IOS["Native iOS port<br/>SwiftUI"]
-    Rust -->|selected builds| Wasm["WebAssembly"]
-    Wasm --> WebApp["Authenticated web app<br/>React / TypeScript"]
-    Android --> Backend
-    IOS --> Backend
-    WebApp --> Backend
-    Public --> Edge["Cloudflare<br/>deployment and media"]
+flowchart LR
+    subgraph Surfaces["Product surfaces"]
+        Public["Live public web<br/>Next.js / React / TypeScript"]
+        WebApp["Authenticated web app<br/>React / TypeScript - in development"]
+        Android["Native Android<br/>Kotlin / Compose"]
+        IOS["Native iOS port<br/>SwiftUI"]
+    end
+
+    subgraph Shared["Rust integration"]
+        PublicWasm["Standalone Rust / WGPU<br/>browser visual proofs"]
+        Core["Shared fan_core<br/>domain logic, state and selected WGPU"]
+    end
+
+    Backend["Supabase<br/>Auth / PostgreSQL / Storage / Edge Functions"]
+    Edge["Cloudflare<br/>Workers / CDN / R2"]
+
+    Public -->|loads WASM builds| PublicWasm
+    Public -->|public reads and server routes| Backend
+    Public -->|OpenNext deployment| Edge
+    WebApp -->|WASM bridge crates| Core
+    WebApp -->|supabase-js| Backend
+    Android -->|UniFFI / JNI bindings| Core
+    Android -->|platform HTTP transport| Backend
+    IOS -->|UniFFI / native library| Core
+    IOS -->|platform HTTP transport| Backend
 ```
 
-The split is deliberate: public web routes prioritise discovery and accessibility; native clients handle richer interaction and device integration; Rust owns logic that should not drift between platforms.
+The split is deliberate: public web routes prioritise discovery and accessibility; native clients handle richer interaction and device integration; and `fan_core` owns selected logic and rendering that should not drift between supported clients. The public website's lightweight Rust/WGPU visuals are separate browser builds, while the authenticated web app uses wrapper crates that compile selected `fan_core` functionality to WebAssembly. On native clients, Rust can build and parse selected backend request contracts while Kotlin or Swift performs the platform network transport.
 
 ## Selected engineering decisions
 
