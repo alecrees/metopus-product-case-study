@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "viewerId": "portfolio-reviewer",
+  "homeArtistId": "glass-meridian",
+  "artists": [
+    { "id": "glass-meridian", "name": "Glass Meridian", "genre": "Alternative", "color": "#f4c95d", "activity": 92, "followers": 18420, "status": "broadcasting" },
+    { "id": "north-static", "name": "North Static", "genre": "Electronic", "color": "#58c4b8", "activity": 84, "followers": 12100, "status": "active" },
+    { "id": "low-winter", "name": "Low Winter", "genre": "Electronic", "color": "#6aa9d8", "activity": 63, "followers": 8400, "status": "active" },
+    { "id": "velour-engine", "name": "Velour Engine", "genre": "Electronic", "color": "#db7f67", "activity": 77, "followers": 9700, "status": "new" },
+    { "id": "static-orchard", "name": "Static Orchard", "genre": "Electronic", "color": "#b8d66d", "activity": 55, "followers": 4300, "status": "quiet" },
+    { "id": "black-harbour", "name": "Black Harbour", "genre": "Rock", "color": "#d86a73", "activity": 88, "followers": 22100, "status": "active" },
+    { "id": "copper-saint", "name": "Copper Saint", "genre": "Rock", "color": "#e89452", "activity": 71, "followers": 11300, "status": "active" },
+    { "id": "paper-crown", "name": "Paper Crown", "genre": "Rock", "color": "#a77ac2", "activity": 60, "followers": 6800, "status": "quiet" },
+    { "id": "red-echo", "name": "Red Echo", "genre": "Rock", "color": "#ef6a62", "activity": 81, "followers": 15600, "status": "new" },
+    { "id": "signal-choir", "name": "Signal Choir", "genre": "Experimental", "color": "#5cb9d1", "activity": 90, "followers": 14200, "status": "broadcasting" },
+    { "id": "soft-geometry", "name": "Soft Geometry", "genre": "Experimental", "color": "#d8b45b", "activity": 68, "followers": 7900, "status": "active" },
+    { "id": "thread-index", "name": "Thread Index", "genre": "Experimental", "color": "#80c66a", "activity": 73, "followers": 9100, "status": "new" },
+    { "id": "after-image", "name": "After Image", "genre": "Experimental", "color": "#bb78aa", "activity": 49, "followers": 3900, "status": "quiet" },
+    { "id": "june-atlas", "name": "June Atlas", "genre": "Alternative", "color": "#6eb5a8", "activity": 76, "followers": 10800, "status": "active" },
+    { "id": "small-hours", "name": "Small Hours", "genre": "Alternative", "color": "#7994d1", "activity": 65, "followers": 7200, "status": "active" },
+    { "id": "juniper-vale", "name": "Juniper Vale", "genre": "Alternative", "color": "#a6c36f", "activity": 58, "followers": 5100, "status": "quiet" },
+    { "id": "mirror-falls", "name": "Mirror Falls", "genre": "Alternative", "color": "#cf826a", "activity": 86, "followers": 13700, "status": "new" },
+    { "id": "lunar-method", "name": "Lunar Method", "genre": "Electronic", "color": "#8d7cc1", "activity": 69, "followers": 8200, "status": "active" }
+  ],
+  "groups": [
+    { "id": "night-circuit", "name": "Night Circuit", "color": "#58c4b8", "artistIds": ["north-static", "low-winter", "velour-engine", "static-orchard", "lunar-method"] },
+    { "id": "guitar-rooms", "name": "Guitar Rooms", "color": "#d86a73", "artistIds": ["black-harbour", "copper-saint", "paper-crown", "red-echo"] },
+    { "id": "left-field", "name": "Left Field", "color": "#d8b45b", "artistIds": ["signal-choir", "soft-geometry", "thread-index", "after-image"] }
+  ]
+}

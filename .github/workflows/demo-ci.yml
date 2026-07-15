@@ -1,0 +1,50 @@
+name: Culture demo checks
+
+on:
+  push:
+    paths:
+      - "demo/**"
+      - ".github/workflows/demo-ci.yml"
+  pull_request:
+    paths:
+      - "demo/**"
+      - ".github/workflows/demo-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: demo
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: demo/package-lock.json
+
+      - name: Set up Rust target
+        run: rustup target add wasm32-unknown-unknown
+
+      - name: Cache wasm-pack
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/bin/wasm-pack
+          key: ${{ runner.os }}-wasm-pack-0.14.0
+
+      - name: Install wasm-pack
+        run: command -v wasm-pack >/dev/null 2>&1 || cargo install wasm-pack --version 0.14.0 --locked
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests and production build
+        run: npm run check

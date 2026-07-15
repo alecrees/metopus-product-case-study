@@ -15,3 +15,5 @@ Thumbs.db
 private/
 raw-assets/
 draft-assets/
+demo/src/wasm/pkg/
+demo/rust/target/

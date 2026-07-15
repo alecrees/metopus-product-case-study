@@ -10,6 +10,18 @@ This repository documents the product, architecture and engineering decisions wi
 
 [Live product site](https://metopus.com/) | [Portfolio case study](https://www.alecreesdrummer.com/#metopus) | [LinkedIn](https://www.linkedin.com/in/alec-rees)
 
+## Interactive code demo
+
+The [`demo/`](demo/) directory contains a runnable, public-safe Culture/Scene Explorer built with React, TypeScript and a small Rust/WebAssembly layout engine. It uses fictional fixture data and simplified rules to demonstrate typed state, responsive interaction, view transitions and the browser-to-WASM boundary without publishing the production Metopus renderer or commercial logic.
+
+```bash
+cd demo
+npm install
+npm run dev
+```
+
+The demo includes TypeScript contract tests, Rust layout and transition tests, a production build and path-scoped continuous integration.
+
 ## Product surfaces
 
 <p align="center">

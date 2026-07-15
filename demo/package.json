@@ -1,0 +1,31 @@
+{
+  "name": "metopus-culture-scene-demo",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build:wasm": "wasm-pack build rust --target web --release --out-dir ../src/wasm/pkg --out-name culture_engine --no-pack",
+    "predev": "npm run build:wasm",
+    "dev": "vite --host 0.0.0.0",
+    "build": "npm run build:wasm && tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test:ts": "vitest run",
+    "test:rust": "cargo test --manifest-path rust/Cargo.toml",
+    "test": "npm run test:ts && npm run test:rust",
+    "check": "npm run test && npm run build"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^6.0.0",
+    "typescript": "^6.0.0",
+    "vite": "^8.0.0",
+    "vitest": "^4.0.0"
+  }
+}

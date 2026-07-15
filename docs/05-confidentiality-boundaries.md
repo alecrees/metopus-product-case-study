@@ -9,12 +9,14 @@ Metopus is an active commercial product. This repository demonstrates the work w
 - original visual and interaction work
 - reviewed screenshots using test/product data
 - implementation decisions and testing approach
+- isolated Culture/Scene demonstration code using fictional data and simplified rules
 - honest description of AI-assisted development
 - links to existing public surfaces
 
 ## Kept private
 
 - production source and private commit history
+- production renderer, shaders, exact layout algorithms and grouping mechanics
 - credentials, environment configuration and signing material
 - database schemas, sensitive policies and admin operations
 - proprietary ranking, reward, monetisation and safety mechanics
