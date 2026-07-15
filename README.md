@@ -14,6 +14,8 @@ This repository documents the product, architecture and engineering decisions wi
 
 The [`demo/`](demo/) directory contains a runnable, public-safe Culture/Scene Explorer built with React, TypeScript and a small Rust/WebAssembly layout engine. It uses fictional fixture data and simplified rules to demonstrate typed state, responsive interaction, view transitions and the browser-to-WASM boundary without publishing the production Metopus renderer or commercial logic.
 
+**[Launch the interactive demo](https://alecrees.github.io/metopus-product-case-study/)**
+
 ```bash
 cd demo
 npm install
